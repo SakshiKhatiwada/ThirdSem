@@ -13,7 +13,7 @@ int main ()
     float a,b,x, poly[max];
     //initial guess
 
-    printf("Enter the degree of the polynomial (max 5): ");
+    printf("Enter the degree of the polynomial (max %d): ",max);
     scanf("%d",&degree);
     printf("Enter the coefficients: ");
     for (i=0; i<=degree; i++)
