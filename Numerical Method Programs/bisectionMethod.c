@@ -1,6 +1,7 @@
 #include<stdio.h>
 #include<conio.h>
 #include<math.h>
+#include<stdlib.h>
 #define max 5
 //Bisection Method Implementation
 
@@ -24,6 +25,12 @@ int main ()
     scanf("%f",&a);
     printf("b= ");
     scanf("%f",&b);
+
+    if (!(evaluate(poly,a,degree) * evaluate(poly,b,degree)< 0))
+    {
+        printf("f(a) and f(b) are of same signs. a and b doesn't bracket the root!");
+        exit (1);
+    }
     x= (a+b)/2;
 
     printf("\n a \t\t b \t\t x \t\t f(x) \n");
