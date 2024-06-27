@@ -11,7 +11,7 @@ float evaluate (float [],float x, int degree );
 int main ()
 {
     int degree,i;
-    float a,b,x, poly[max];
+    float a,b,x, poly[max],fb,temp;
     //initial guess
 
     printf("Enter the degree of the polynomial (max %d): ",max);
@@ -26,15 +26,23 @@ int main ()
     printf("b= ");
     scanf("%f",&b);
 
-    if (!(evaluate(poly,a,degree) * evaluate(poly,b,degree)< 0))
+    if (!(evaluate(poly,a,degree) * evaluate(poly,b,degree)< 0))    //checking if they have different signs
     {
         printf("f(a) and f(b) are of same signs. a and b doesn't bracket the root!");
         exit (1);
+    }
+
+    if (evaluate(poly,a,degree) < 0)    //keeping b as the value that gives -ve functional value f(?)
+    {
+        temp = a;
+        a=b;
+        b=temp;
     }
     x= (a+b)/2;
 
     printf("\n a \t\t b \t\t x \t\t f(x) \n");
 
+   
     while (fabs (evaluate(poly,x,degree))>0.001) 
 {
 printf("%f \t %f \t %f \t %f \n",a,b,x,evaluate(poly,x,degree));
